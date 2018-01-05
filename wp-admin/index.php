@@ -77,7 +77,7 @@ if ( ! is_multisite() && current_user_can( 'install_plugins' ) )
 else
 	$help .= '<p>' . sprintf(
 		/* translators: %s: WordPress Planet URL */
-		__( '<strong>WordPress News</strong> &mdash; Latest news from the official WordPress project and the <a href="%s">WordPress Planet</a>.' ),
+		__( '<strong>WordPress News1</strong> &mdash; Latest news from the official WordPress project and the <a href="%s">WordPress Planet</a>.' ),
 		__( 'https://planet.wordpress.org/' )
 	) . '</p>';
 if ( current_user_can( 'edit_theme_options' ) )
@@ -140,3 +140,30 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 wp_print_community_events_templates();
 
 require( ABSPATH . 'wp-admin/admin-footer.php' );
+
+?>
+
+<?php
+add_action('admin_print_footer_scripts', 'my_action_javascript', 99);
+
+function my_action_javascript(){
+    ?>
+    <script type ="text/javascriptt">
+        jQuery(document).ready(function($){
+            var data = {
+            action: 'my_action',
+            whatever: 1234
+        };
+
+        jQuery.post(ajaxurl, data, function (response){
+            alert('Получено с сервера: ' + response);
+        });
+
+        });
+    </script>
+
+
+<?php
+}
+?>
+

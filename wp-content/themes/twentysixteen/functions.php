@@ -432,3 +432,11 @@ function twentysixteen_widget_tag_cloud_args( $args ) {
 	return $args;
 }
 add_filter( 'widget_tag_cloud_args', 'twentysixteen_widget_tag_cloud_args' );
+
+add_action('wp_ajax_my_action', 'my_action_callback');
+function my_action_callback(){
+    $whatever = intval($_POST['whatever']);
+    $whatever +=10;
+    echo $whatever;
+    wp_die();
+}
