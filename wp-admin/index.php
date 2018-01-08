@@ -143,27 +143,5 @@ require( ABSPATH . 'wp-admin/admin-footer.php' );
 
 ?>
 
-<?php
-add_action('admin_print_footer_scripts', 'my_action_javascript', 99);
 
-function my_action_javascript(){
-    ?>
-    <script type ="text/javascriptt">
-        jQuery(document).ready(function($){
-            var data = {
-            action: 'my_action',
-            whatever: 1234
-        };
-
-        jQuery.post(ajaxurl, data, function (response){
-            alert('Получено с сервера: ' + response);
-        });
-
-        });
-    </script>
-
-
-<?php
-}
-?>
 

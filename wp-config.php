@@ -26,7 +26,7 @@ define('DB_NAME', 'wp_beetrot');
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'ыукршщ1985');
+define('DB_PASSWORD', '');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
