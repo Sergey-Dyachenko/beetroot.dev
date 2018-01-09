@@ -450,14 +450,18 @@ function my_action_javascript() {
     <script type="text/javascript" >
         jQuery(document).ready(function($) {
             console.log(myajax.url);
+
+
             var data = {
                 action: 'my_action',
                 whatever: 1234
             };
 
             // 'ajaxurl' не определена во фронте, поэтому мы добавили её аналог с помощью wp_localize_script()
-            jQuery.post( myajax.url, data, function(response) {
-                alert('Получено с сервера: ' + response);
+            $('.custom-logo-link').click(function() {
+                jQuery.post(myajax.url, data, function (response) {
+                    alert('Получено с сервера: ' + response);
+                });
             });
         });
     </script>
