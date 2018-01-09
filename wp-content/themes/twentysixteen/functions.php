@@ -450,13 +450,16 @@ function my_action_javascript() {
     <script type="text/javascript" >
         jQuery(document).ready(function($) {
             console.log(myajax.url);
-
+            var alter='';
+            $('.custom-logo-link').click(function(){
+                  alter = $(this).children("img").attr("alt");
+            });
 
             var data = {
                 action: 'my_action',
-                whatever: 1234
+                whatever: alter
             };
-
+            console.log(data.alter);
             // 'ajaxurl' не определена во фронте, поэтому мы добавили её аналог с помощью wp_localize_script()
             $('.custom-logo-link').click(function() {
                 jQuery.post(myajax.url, data, function (response) {
@@ -472,8 +475,8 @@ add_action('wp_ajax_my_action', 'my_action_callback');
 add_action('wp_ajax_nopriv_my_action', 'my_action_callback');
 function my_action_callback() {
     $whatever = intval( $_POST['whatever'] );
-
-    echo $whatever + 10;
+    $whatever = $whatever . ' Company';
+    echo $whatever;
 
     // выход нужен для того, чтобы в ответе не было ничего лишнего, только то что возвращает функция
     wp_die();
